@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: VkAssignment
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://${POSTGRESDB_URL:localhost:5432/postgres}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    defer-datasource-initialization: true
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+
+  security:
+    cors:
+      allowed-origins:
+        - "http://localhost:3000"
+
+springdoc:
+  api-docs:
+    path: /api/docs/doc
+  swagger-ui:
+    path: /api/docs/doc-ui
+
+server:
+  port: ${PORT:8080}
